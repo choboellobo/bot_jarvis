@@ -8,4 +8,4 @@ app.get('/', (req, res) => {
     res.json({ app: "working"})
 })
 
-app.listen(4000)
+app.listen( process.env.PORT || 4000)
