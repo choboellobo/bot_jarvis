@@ -2,10 +2,9 @@
   "name": "bot_jarvis",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./index.js",
+    "start": "node ./dist/index.js",
     "cy": "cypress open"
   },
   "keywords": [],
