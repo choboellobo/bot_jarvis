@@ -1,0 +1,26 @@
+{
+  "name": "bot_jarvis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "node ./dist/index.js",
+    "cy": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/node-telegram-bot-api": "^0.56.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "child_process": "^1.0.2",
+    "cypress": "^9.5.3",
+    "node-telegram-bot-api": "^0.56.0",
+    "request": "^2.88.2"
+  }
+}
