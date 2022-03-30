@@ -75,12 +75,13 @@ export const wizardBuyTickets = async (bot: TelegramBot, msg: TelegramBot.Messag
         bot.sendVideo(msg.chat.id, Buffer.from( fs.readFileSync( path.join(__dirname,'..','..','..', 'cypress', 'videos', 'ocine.spec.js.mp4')) ) )
     } catch (error) {
         bot.sendMessage(msg.chat.id, `Señor, lo siento no he podido comprar las entradas, esto es lo que ha ocurrido: ${error}`);
+        bot.sendVideo(msg.chat.id, Buffer.from( fs.readFileSync( path.join(__dirname,'..','..','..', 'cypress', 'videos', 'ocine.spec.js.mp4')) ) )
     } 
 }
 
 function buy(movie: string, time: string, quantity: number) {
     return new Promise( (resolve, reject) => {        
-        exec('./node_modules/cypress/bin/cypress run --spec ./cypress/integration/ocine.spec.js --browser chrome --env data=\'{\"quantity\": '+quantity+' ,\"movie\":\"'+movie+'\", \"time\":\"'+time+'\" }\' ',
+        exec('./node_modules/cypress/bin/cypress run --spec ./cypress/integration/ocine.spec.js --browser electron --env data=\'{\"quantity\": '+quantity+' ,\"movie\":\"'+movie+'\", \"time\":\"'+time+'\" }\' ',
         (error, stdout, stderr) => {
             if(error) reject(error);
             else resolve(true)
