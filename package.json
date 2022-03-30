@@ -6,6 +6,7 @@
     "build": "tsc",
     "start": "node ./dist/index.js",
     "cy": "cypress open --env data='{\"quantity\": 1 ,\"movie\":\"The Batman\", \"time\":\"19:30\"}'",
+    "cy:run": "cypress run --spec ./cypress/integration/ocine.spec.js --browser chrome --env data='{\"quantity\": 1 ,\"movie\":\"The Batman\", \"time\":\"19:30\"}'",
     "postinstall": "tsc"
   },
   "keywords": [],
