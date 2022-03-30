@@ -76,11 +76,12 @@ describe('Comprar entradas cine', () => {
             if( elem.css('display') === 'block') {
                 
                 if( elem.find('.name').text() === movie ) {
-                    elem.find('.horasessio:not(.bloqueix) a').each( (i, e) => {
+                    elem.find('.horasessio:not(.bloqueix) a').each( async (i, e) => {
                         if(e.innerText.trim() ===  time ) {
                            if( !click ) {
-                            e.click()
-                            cy.wait(2000)
+                            await e.click()
+                            await cy.log("Click element")
+                            await cy.wait(2000)
                             cogerSitio()
                             click = true;
                            } 
