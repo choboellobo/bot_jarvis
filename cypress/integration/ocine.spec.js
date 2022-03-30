@@ -1,7 +1,6 @@
 
 describe('Comprar entradas cine', () => {
-    //const { movie, time, quantity } = Cypress.env('data')
-    const movie = "The Batman", time = "19:30", quantity = 1;
+    const { movie, time, quantity } = Cypress.env('data')
     function comprar3() {
         cy.get('input').each( async (el, index) => {
             switch(index) {

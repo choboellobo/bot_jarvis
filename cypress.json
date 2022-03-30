@@ -1,3 +1,4 @@
 {
-    "chromeWebSecurity": false
+    "chromeWebSecurity": false,
+    "retries": { "openMode": 0, "runMode": 2 }
 }
