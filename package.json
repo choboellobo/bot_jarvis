@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/index.js",
-    "cy": "cypress open",
+    "cy": "cypress open --env data='{\"quantity\": 1 ,\"movie\":\"The Batman\", \"time\":\"19:30\"}'",
     "postinstall": "tsc"
   },
   "keywords": [],

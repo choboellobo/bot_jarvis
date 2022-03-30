@@ -2,7 +2,7 @@
 describe('Comprar entradas cine', () => {
     const { movie, time, quantity } = Cypress.env('data')
     async function comprar3() {
-        await cy.get('input').each( (el, index) => {
+        await cy.get('input').each( async (el, index) => {
             switch(index) {
                 case 0: 
                 await cy.wrap(el).type("Eduardo")
@@ -68,10 +68,10 @@ describe('Comprar entradas cine', () => {
             }
         })
     }
-    it('Comprar entradas', () => {
+    it('Comprar entradas', async () => {
         let click = false;
-        cy.visit('https://www.ocinerioshopping.es/')
-        cy.get('.pelis-grid .peli-item').each( (elem, index) => {
+        await cy.visit('https://www.ocinerioshopping.es/')
+        await cy.get('.pelis-grid .peli-item').each( async (elem, index) => {
             
             if( elem.css('display') === 'block') {
                 

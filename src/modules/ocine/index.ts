@@ -81,7 +81,7 @@ export const wizardBuyTickets = async (bot: TelegramBot, msg: TelegramBot.Messag
 
 function buy(movie: string, time: string, quantity: number) {
     return new Promise( (resolve, reject) => {        
-        exec('./node_modules/cypress/bin/cypress run --spec ./cypress/integration/ocine.spec.js --browser electron --env data=\'{\"quantity\": '+quantity+' ,\"movie\":\"'+movie+'\", \"time\":\"'+time+'\" }\' ',
+        exec('./node_modules/cypress/bin/cypress run --spec ./cypress/integration/ocine.spec.js --browser chrome --env data=\'{\"quantity\": '+quantity+' ,\"movie\":\"'+movie+'\", \"time\":\"'+time+'\" }\' ',
         (error, stdout, stderr) => {
             if(error) reject(error);
             else resolve(true)
