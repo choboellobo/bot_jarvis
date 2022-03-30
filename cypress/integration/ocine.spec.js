@@ -1,69 +1,69 @@
 
 describe('Comprar entradas cine', () => {
     const { movie, time, quantity } = Cypress.env('data')
-    function comprar3() {
-        cy.get('input').each( (el, index) => {
+    async function comprar3() {
+        await cy.get('input').each( (el, index) => {
             switch(index) {
                 case 0: 
-                cy.wrap(el).type("Eduardo")
+                await cy.wrap(el).type("Eduardo")
                 break;
                 case 1: 
-                cy.wrap(el).type("Muñoz")
+                await cy.wrap(el).type("Muñoz")
                 break;
                 case 2: 
-                cy.wrap(el).type("choboellobo@gmail.com")
+                await cy.wrap(el).type("choboellobo@gmail.com")
                 break;
                 case 3: 
-                cy.wrap(el).type("choboellobo@gmail.com")
+                await cy.wrap(el).type("choboellobo@gmail.com")
                 break;
                 case 4: 
-                cy.wrap(el).type("665887766")
+                await cy.wrap(el).type("665887766")
                 break;
                 case 6: 
-                el.click()
+                await el.click()
                 break;
             }
         })
-        cy.wait(1000);
-        cy.get('button').each( (el, index) => {
+        await cy.wait(1000);
+        cy.get('button').each( async (el, index) => {
             if(index === 1){
-                el.click()
-                cy.wait(2000)
+                await el.click()
+                await cy.wait(2000)
             } 
             
         })
     } 
-    function comprar2() {
-        cy.get('a').each( (el, index) => {
+    async function comprar2() {
+        await cy.get('a').each( async (el, index) => {
             if( index === 0 ) {
-                cy.wrap(el).click()
-                cy.wait(1000)
-                comprar3()
+                await cy.wrap(el).click()
+                await cy.wait(1000)
+                await comprar3()
             }
         })
     }
-    function comprar()  {
-        cy.get('title').should('to.be', 'webtpv21')
-        cy.get('button').each( (el, index) => {
+    async function comprar()  {
+        await cy.get('title').should('to.be', 'webtpv21')
+        await cy.get('button').each( async (el, index) => {
             if( index === 1 ) {
-                el.click()
-                cy.wait(1000)
-                comprar2()
+                await el.click()
+                await cy.wait(1000)
+                await comprar2()
             }
         })
     }
-    function cogerSitio() {
-        cy.get('title').should('to.be', 'Distribución de la sala')
+    async function cogerSitio() {
+        await cy.get('title').should('to.be', 'Distribución de la sala')
         let count = 0;
-        cy.get('.botonnormal').each( (el, i) => {
+        await cy.get('.botonnormal').each( async (el, i) => {
             if( i < quantity) {
-                cy.wrap(el).click()
-                cy.wait(1000)
+                await cy.wrap(el).click()
+                await cy.wait(1000)
                 count++
                 if( quantity == count) {
-                    cy.get('#compra input').click()
-                    cy.wait(1000)
-                    comprar()
+                    await cy.get('#compra input').click()
+                    await cy.wait(1000)
+                    await comprar()
                 }
             }
         })
@@ -79,11 +79,11 @@ describe('Comprar entradas cine', () => {
                     elem.find('.horasessio:not(.bloqueix) a').each( async (i, e) => {
                         if(e.innerText.trim() ===  time ) {
                            if( !click ) {
+                            click = true;
                             await e.click()
                             await cy.log("Click element")
                             await cy.wait(2000)
-                            cogerSitio()
-                            click = true;
+                            await cogerSitio()
                            } 
                         } 
                     })
